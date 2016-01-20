@@ -2,6 +2,7 @@
 little javascript project
 
 Todo:
-notes content
-node server
-users
+main page, 
+notes content, 
+node server, 
+users,

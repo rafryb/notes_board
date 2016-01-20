@@ -14,6 +14,8 @@ var Note = function(){
 
   function noteDestroy(e){
     $obj = e.target.parentElement.parentElement;
+    $board = document.getElementById("board");
+    $board.removeChild($obj);
     console.log($obj);
     console.log("destroy event!")
     return true;
