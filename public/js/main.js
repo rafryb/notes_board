@@ -21,12 +21,18 @@ var Note = function(){
     return true;
   };
 
+  //Note Content element
+  var NoteContentElement = function(content){
+    var content = content;
+    $contentElement = document.createElement('')
+  }
+
   // Main note container
   var noteElement = function(x,y, content){
     // x,y, content variables
     var content = content || "Your Note !";
-    var x = x + "px" || 300 + "px";
-    var y = y + "px" || 300 + "px";
+    var x = x || 300;
+    var y = y || 300;
     console.log(x,y,content);
 
     // Destroy note element
@@ -34,12 +40,12 @@ var Note = function(){
     $note.className = "note";
     $note.appendChild(noteDelElement());
 
-    // Note Position
-    $note.style.top = y;
-    $note.style.left = x;
-
     // Note Content
 
+
+    // Note Position
+    $note.style.top = y + "px";
+    $note.style.left = x + "px";
 
     // Events
     $note.addEventListener('mousedown', function(e){
@@ -62,7 +68,6 @@ var Note = function(){
     $obj.style.top = e.clientY - 50 + "px";
     return true;
   }
-
 
   var generateNote = function(){
     var $note = noteElement();
