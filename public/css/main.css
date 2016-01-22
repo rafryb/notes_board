@@ -25,19 +25,14 @@ body{
   color: #fff;
 }
 
-
-
 #new_note:hover{
   background-color: #de7519;
   border: 0.3em solid #de7519;
 }
 
-
 .note{
   font-size: 1rem;
   position: absolute;
-  top: 300px;
-  left: 300px;
   background-color: #fcfcfc;
   height: 400px;
   width: 300px;
@@ -48,7 +43,7 @@ body{
 }
 
 .note:hover .close_button{
-  display: block; 
+  display: block;
 }
 
 .close_button,

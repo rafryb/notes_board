@@ -1,6 +1,6 @@
 
 var Note = function(){
-  
+
   var current_element = null;
 
   // Note destroy button
@@ -22,11 +22,25 @@ var Note = function(){
   };
 
   // Main note container
-  var noteElement = function(){
+  var noteElement = function(x,y, content){
+    // x,y, content variables
+    var content = content || "Your Note !";
+    var x = x + "px" || 300 + "px";
+    var y = y + "px" || 300 + "px";
+    console.log(x,y,content);
+
+    // Destroy note element
     $note = document.createElement('div');
     $note.className = "note";
     $note.appendChild(noteDelElement());
-    
+
+    // Note Position
+    $note.style.top = y;
+    $note.style.left = x;
+
+    // Note Content
+
+
     // Events
     $note.addEventListener('mousedown', function(e){
       current_element = this;
@@ -38,7 +52,7 @@ var Note = function(){
       console.log("event triggers!");
       current_element = null;
     });
-    
+
     return $note;
   };
 
@@ -49,21 +63,23 @@ var Note = function(){
     return true;
   }
 
+
+  var generateNote = function(){
+    var $note = noteElement();
+    document.body.appendChild($note);
+  }
+
   // public functions
   return{
     init: function(){
       // init notes on board
     },
-    addNote: function(){ 
-      document.body.appendChild(noteElement());
-    }
+    addNote: generateNote
   };
 }
- 
+
 
 note = Note();
 note.init();
 $newButton = document.getElementById('new_note');
-$newButton.addEventListener('click', function(e){
-  note.addNote();
-});
+$newButton.addEventListener('click', note.addNote );
