@@ -17,14 +17,32 @@ var Note = function(){
     $board = document.getElementById("board");
     $board.removeChild($obj);
     console.log($obj);
-    console.log("destroy event!")
+    console.log("destroy event!");
     return true;
   };
 
+  var noteDoneElement = function(){
+    $doneButton = document.createElement('a');
+    $doneButton.className = "done_button";
+    $doneButton.innerHTML = "<i class='ion-ios-checkmark'></i>"
+    $doneButton.addEventListener('click', noteDone);
+    return $doneButton;
+  }
+
+  function noteDone(e){
+    $obj = e.target.parentElement.parentElement;
+    $obj.style.color = "green";
+    console.log($obj);
+  }
+
+
   //Note Content element
-  var NoteContentElement = function(content){
+  var noteBodyElement = function(content){
     var content = content;
-    $contentElement = document.createElement('')
+    $bodyElement = document.createElement('div');
+    $bodyElement.className = "note_body";
+    $bodyElement.innerHTML = "<p>" + content + "</p>";
+    return $bodyElement;
   }
 
   // Main note container
@@ -35,13 +53,19 @@ var Note = function(){
     var y = y || 300;
     console.log(x,y,content);
 
-    // Destroy note element
+    // Note element
     $note = document.createElement('div');
     $note.className = "note";
+
+    // Destroy note button
     $note.appendChild(noteDelElement());
 
-    // Note Content
+    // Done note button
+    $note.appendChild(noteDoneElement());
 
+    // Note Content
+    $note.appendChild(noteBodyElement(content));
+    // Note Footer
 
     // Note Position
     $note.style.top = y + "px";
@@ -52,7 +76,7 @@ var Note = function(){
       current_element = this;
       console.log(current_element);
       document.addEventListener('mousemove', moveNote);
-    });
+    }, true);
     $note.addEventListener('mouseup', function(e){
       document.removeEventListener('mousemove', moveNote);
       console.log("event triggers!");
@@ -74,10 +98,15 @@ var Note = function(){
     document.body.appendChild($note);
   }
 
+  var generateNotes = function(){
+
+  }
+
   // public functions
   return{
     init: function(){
       // init notes on board
+      console.log("App init")
     },
     addNote: generateNote
   };

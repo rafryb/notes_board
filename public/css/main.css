@@ -46,6 +46,10 @@ body{
   display: block;
 }
 
+.note:hover .done_button{
+  display: block;
+}
+
 .close_button,
 .close_button:active,
 .close_button:visited{
@@ -55,6 +59,25 @@ body{
   font-size: 2rem;
   color: #c6c3c3;
   display: none;
+}
+
+.done_button,
+.done_button:active,
+.done_button:visited{
+  position:absolute;
+  right: 60px;
+  top: 15px;
+  font-size: 2rem;
+  color: #c6c3c3;
+  display: none;
+}
+
+.done_button:hover{
+  color: green;
+}
+
+.close_button:hover{
+  color: red;
 }
 
 .note_body{
