@@ -32,9 +32,9 @@ var Note = function(){
   function noteDone(e){
     $obj = e.target.parentElement.parentElement;
     $obj.style.color = "green";
-    console.log($obj);
+    var current_time = new Date();
+    console.log(current_time);
   }
-
 
   //Note Content element
   var noteBodyElement = function(content){
@@ -43,6 +43,11 @@ var Note = function(){
     $bodyElement.className = "note_body";
     $bodyElement.innerHTML = "<p>" + content + "</p>";
     return $bodyElement;
+  }
+
+  var noteFooterElement = function(){
+    var current_time = new Date();
+    console.log(current_time);
   }
 
   // Main note container
@@ -76,7 +81,7 @@ var Note = function(){
       current_element = this;
       console.log(current_element);
       document.addEventListener('mousemove', moveNote);
-    }, true);
+    });
     $note.addEventListener('mouseup', function(e){
       document.removeEventListener('mousemove', moveNote);
       console.log("event triggers!");
@@ -87,14 +92,15 @@ var Note = function(){
   };
 
   function moveNote(e){
+    console.log(e.target);
     $obj = current_element;
     $obj.style.left = e.clientX - 50 + "px";
     $obj.style.top = e.clientY - 50 + "px";
     return true;
   }
 
-  var generateNote = function(){
-    var $note = noteElement();
+  var generateNote = function(content){
+    var $note = noteElement(null,null,content);
     document.body.appendChild($note);
   }
 
@@ -115,5 +121,27 @@ var Note = function(){
 
 note = Note();
 note.init();
+
+// Elements
 $newButton = document.getElementById('new_note');
-$newButton.addEventListener('click', note.addNote );
+$closeForm = document.getElementById('close_form');
+$submitNote = document.getElementById('submit_note');
+$noteWindow = document.getElementById('background');
+$noteInput = document.getElementById('new_note_content');
+
+// Main page events
+$newButton.addEventListener('click', function(e){
+  $noteWindow.style.visibility = "visible";
+});
+
+$closeForm.addEventListener('click', function(e){
+  $noteInput.value = "";
+  $noteWindow.style.visibility = "hidden";
+});
+
+$submitNote.addEventListener('click', function(e){
+  var content = $noteInput.value;
+  note.addNote(content);
+  $noteInput.value = "";
+  $noteWindow.style.visibility = "hidden";
+});

@@ -9,20 +9,38 @@
   </head>
   <body id="board">
 
-    <button id="new_note">Add new note</button>
+    <button class="button" id="new_note">Add new note</button>
 
-    <div class="note">
+    <!--<div class="note">
       <a href="#" class="close_button"><i class="ion-ios-close"></i></a>
       <a href="#" class="done_button"><i class="ion-ios-checkmark"></i></a>
-      <div class="note_body">
+      -<div class="note_body">
         <p>This is content</p>
       </div>
       <div class="footer">
         <p>This is footer</p>
       </div>
+    </div> -->
+
+  <div id="background">
+    <div class="form_container">
+      <p><a href="#" id="close_form"><i class="ion-ios-close"></i></a></p>
+      <div class="row">
+        <h2>Add new note !</h2>
+      </div>
+      <div class="row">
+        <div class="form">
+          <div class="col">
+            <textarea id="new_note_content"></textarea>
+          </div>
+          <div class="col">
+            <button class="button" id="submit_note" class="button">Submit Note !</button>
+          </div>
+      </div>
     </div>
+  </div>
 
-
+  <!-- scripts -->
   <script src="public/js/main.js"></script>
   </body>
 </html>
