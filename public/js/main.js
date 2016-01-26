@@ -3,6 +3,13 @@ var Note = function(){
 
   var current_element = null;
 
+  var month_names = [
+    "styczen", "luty", "marzec",
+    "kwiecien", "maj", "czerwiec",
+    "lipiec", "sierpien", "wrzesien",
+    "pazdziernik", "listopad", "grudzien"
+  ];
+
   // Note destroy button
   var noteDelElement = function(){
     $delButton = document.createElement('a');
@@ -32,8 +39,6 @@ var Note = function(){
   function noteDone(e){
     $obj = e.target.parentElement.parentElement;
     $obj.style.color = "green";
-    var current_time = new Date();
-    console.log(current_time);
   }
 
   //Note Content element
@@ -46,9 +51,17 @@ var Note = function(){
   }
 
   var noteFooterElement = function(){
-    var current_time = new Date();
-    console.log(current_time);
-  }
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    current_time = day + " " + month_names[month] + " " + year;
+    console.log(day);
+    $footerElement = document.createElement('div');
+    $footerElement.className = "footer";
+    $footerElement.innerHTML = "<p>" + current_time + "</p>";
+    return $footerElement;
+    }
 
   // Main note container
   var noteElement = function(x,y, content){
@@ -70,7 +83,9 @@ var Note = function(){
 
     // Note Content
     $note.appendChild(noteBodyElement(content));
+
     // Note Footer
+    $note.appendChild(noteFooterElement());
 
     // Note Position
     $note.style.top = y + "px";
@@ -112,7 +127,7 @@ var Note = function(){
   return{
     init: function(){
       // init notes on board
-      console.log("App init")
+      console.log("App init");
     },
     addNote: generateNote
   };
