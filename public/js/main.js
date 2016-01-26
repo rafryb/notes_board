@@ -10,6 +10,15 @@ var Note = function(){
     "pazdziernik", "listopad", "grudzien"
   ];
 
+  function getCurrentDate(){
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    current_time = day + " " + month_names[month] + " " + year;
+    return current_time;
+  }
+
   // Note destroy button
   var noteDelElement = function(){
     $delButton = document.createElement('a');
@@ -39,6 +48,11 @@ var Note = function(){
   function noteDone(e){
     $obj = e.target.parentElement.parentElement;
     $obj.style.color = "green";
+
+    // current time
+    current_time = getCurrentDate();
+    $footer = document.getElementsByClassName("footer")[0];
+    $footer.innerHTML = "<p>" + current_time + " Done!</p>";
   }
 
   //Note Content element
@@ -51,12 +65,7 @@ var Note = function(){
   }
 
   var noteFooterElement = function(){
-    var d = new Date();
-    var day = d.getDate();
-    var month = d.getMonth();
-    var year = d.getFullYear();
-    current_time = day + " " + month_names[month] + " " + year;
-    console.log(day);
+    current_time = getCurrentDate();
     $footerElement = document.createElement('div');
     $footerElement.className = "footer";
     $footerElement.innerHTML = "<p>" + current_time + "</p>";
