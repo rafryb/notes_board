@@ -27,7 +27,6 @@ var Note = function(){
 
   // helpers
   var helpers = {
-
     getCurrentDate: function(){
       var d = new Date();
       var day = d.getDate();
@@ -67,15 +66,6 @@ var Note = function(){
       return true;
     }
 
-  function getCurrentDate(){
-    var d = new Date();
-    var day = d.getDate();
-    var month = d.getMonth();
-    var year = d.getFullYear();
-    current_time = day + " " + month_names[month] + " " + year;
-    return current_time;
-  }
-
   // Note destroy button
   var noteDelElement = function(){
     var $delButton = document.createElement('a');
@@ -98,7 +88,7 @@ var Note = function(){
     $obj.style.color = "green";
 
     // current time
-    current_time = getCurrentDate();
+    current_time = helpers.getCurrentDate();
     $footer = document.getElementsByClassName("footer")[0];
     $footer.innerHTML = "<p>" + current_time + " Done!</p>";
   }
@@ -115,7 +105,6 @@ var Note = function(){
   var noteFooterElement = function(){
     var current_time = helpers.getCurrentDate();
     var $footerElement = document.createElement('div');
-    current_time = getCurrentDate();
     $footerElement = document.createElement('div');
     $footerElement.className = "footer";
     $footerElement.innerHTML = "<p>" + current_time + "</p>";
