@@ -65,6 +65,7 @@ var Note = function(){
       $obj.style.top = e.clientY - 50 + "px";
       return true;
     }
+  }
 
   // Note destroy button
   var noteDelElement = function(){
