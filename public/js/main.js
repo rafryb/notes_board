@@ -16,11 +16,8 @@ var Note = function(){
 
   var current_element = null;
 
-<<<<<<< HEAD
   var db = Db();
 
-=======
->>>>>>> d49c381039e15825fd78e314db1e06ba27eaf261
   var month_names = [
     "styczen", "luty", "marzec",
     "kwiecien", "maj", "czerwiec",
@@ -28,7 +25,6 @@ var Note = function(){
     "pazdziernik", "listopad", "grudzien"
   ];
 
-<<<<<<< HEAD
   // helpers
   var helpers = {
 
@@ -70,7 +66,7 @@ var Note = function(){
       $obj.style.top = e.clientY - 50 + "px";
       return true;
     }
-=======
+
   function getCurrentDate(){
     var d = new Date();
     var day = d.getDate();
@@ -78,7 +74,6 @@ var Note = function(){
     var year = d.getFullYear();
     current_time = day + " " + month_names[month] + " " + year;
     return current_time;
->>>>>>> d49c381039e15825fd78e314db1e06ba27eaf261
   }
 
   // Note destroy button
@@ -98,8 +93,6 @@ var Note = function(){
     return $doneButton;
   }
 
-<<<<<<< HEAD
-=======
   function noteDone(e){
     $obj = e.target.parentElement.parentElement;
     $obj.style.color = "green";
@@ -110,7 +103,6 @@ var Note = function(){
     $footer.innerHTML = "<p>" + current_time + " Done!</p>";
   }
 
->>>>>>> d49c381039e15825fd78e314db1e06ba27eaf261
   //Note Content element
   var noteBodyElement = function(content){
     var content = content;
@@ -121,13 +113,10 @@ var Note = function(){
   }
 
   var noteFooterElement = function(){
-<<<<<<< HEAD
     var current_time = helpers.getCurrentDate();
     var $footerElement = document.createElement('div');
-=======
     current_time = getCurrentDate();
     $footerElement = document.createElement('div');
->>>>>>> d49c381039e15825fd78e314db1e06ba27eaf261
     $footerElement.className = "footer";
     $footerElement.innerHTML = "<p>" + current_time + "</p>";
     return $footerElement;
@@ -209,7 +198,6 @@ var Note = function(){
   // public functions
   return{
     init: function(){
-<<<<<<< HEAD
       var $noteBoard = document.getElementById('board');
       var $notes = generateNotes();
       console.log($notes);
@@ -217,10 +205,8 @@ var Note = function(){
         console.log(i);
         $noteBoard.appendChild($notes[i]);
       }
-=======
       // init notes on board
       console.log("App init");
->>>>>>> d49c381039e15825fd78e314db1e06ba27eaf261
     },
     addNote: generateNote
   };
